@@ -21,14 +21,20 @@ def main():
             if event.type == pg.QUIT: return
         
         key_lst = pg.key.get_pressed() #押されてるキーを受け取る
+
+        x = -1
+        y = 0
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0, -1))
-        elif key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0, 1))
-        elif key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1, 0))
-        elif key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((1, 0))
+            y -= 1
+        if key_lst[pg.K_DOWN]:
+            y += 1
+        if key_lst[pg.K_LEFT]:
+            x -= 1
+        if key_lst[pg.K_RIGHT]:
+            x += 2
+
+        kk_rct.move_ip((x, y))
+
         #print(key_lst[pg.K_UP]) #押されてるときTrue
 
         x = tmr % 3200
